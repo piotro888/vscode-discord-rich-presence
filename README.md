@@ -24,7 +24,7 @@ Shows what you're editing in VSCode with advanced Dicord Rich Presence.
 VSCode marketplace: Exstension will be avalible VSCode marketplace soon
 
 Offline installation:
-Download latest release from https://github.com/piotro888/vscode-disocrd-rich-presence/releases and install it in VSCode from Extensions > ... > Install from VSIX
+Download latest `.vsix` release from https://github.com/piotro888/vscode-disocrd-rich-presence/releases and install it in VSCode from Extensions > ... > Install from VSIX
 
 ## Bug reports and feature requests
 Submit new issue: https://github.com/piotro888/vscode-disocrd-rich-presence/issues
