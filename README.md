@@ -36,5 +36,8 @@ Clone repository and use `npm install`. Debugging already configured for VSCode 
 * Support for more extensions
 * More customization :)
 
+## Images
+![example image](https://github.com/piotro888/vscode-disocrd-rich-presence/blob/master/images/example.png?raw=true)
+
 ## License
 License: GPL v3
