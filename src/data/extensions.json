@@ -1,0 +1,20 @@
+{
+    "extensions":[
+       { "ext": "cpp", "lang": "cpp"},
+       { "ext": "hpp", "lang": "cpp"},
+       { "ext": "c", "lang": "c"},
+       { "ext": "h", "lang": "c"},
+       { "ext": "js", "lang": "javascript"},
+       { "ext": "py", "lang": "python"},
+       { "ext": "java", "lang": "java"},
+       { "ext": "json", "lang": "json"},
+       { "ext": "php", "lang": "php"},
+       { "ext": "makefile", "lang": "makefile"},
+       { "ext": "hex", "lang": "asm"},
+       { "ext": "asm", "lang": "asm"},
+       { "ext": "xml", "lang": "xml"},
+       { "ext": "txt", "lang": "txt"},
+       { "ext": "s", "lang": "asm"},
+       { "ext": "sh", "lang": "sh"}
+    ]
+}
