@@ -67,5 +67,13 @@
         "rpc",
         "rich presence",
         "status"
-    ]
+    ],
+    "repository": {
+        "url": "https://github.com/piotro888/vscode-disocrd-rich-presence.git",
+        "type": "git"
+    },
+    "license": "GPL v3",
+    "bugs": {
+        "url": "https://github.com/piotro888/vscode-disocrd-rich-presence/issues"
+    }
 }
