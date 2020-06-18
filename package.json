@@ -104,12 +104,12 @@
         "status"
     ],
     "repository": {
-        "url": "https://github.com/piotro888/vscode-disocrd-rich-presence.git",
+        "url": "https://github.com/piotro888/vscode-discord-rich-presence.git",
         "type": "git"
     },
     "license": "GPL v3",
     "bugs": {
-        "url": "https://github.com/piotro888/vscode-disocrd-rich-presence/issues"
+        "url": "https://github.com/piotro888/vscode-discord-rich-presence/issues"
     },
     "icon": "images/logo.png"
 }

@@ -1,11 +1,11 @@
 # Discord Rich Presence extension for VSCode
 
 <p align="center">
-  <img alt="GitHub release" src="https://img.shields.io/github/v/release/piotro888/vscode-disocrd-rich-presence">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/piotro888/vscode-disocrd-rich-presence/dev?color=blue">
-  <img alt="GitHub commits since latest release (by date)" src="https://img.shields.io/github/commits-since/piotro888/vscode-disocrd-rich-presence/latest/dev?label=commits%40dev%20since%20%20latest%20release">
-  <img alt="GitHub issues" src="https://img.shields.io/github/issues/piotro888/vscode-disocrd-rich-presence">
-  <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/piotro888/vscode-disocrd-rich-presence?color=green">
+  <img alt="GitHub release" src="https://img.shields.io/github/v/release/piotro888/vscode-discord-rich-presence">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/piotro888/vscode-discord-rich-presence/dev?color=blue">
+  <img alt="GitHub commits since latest release (by date)" src="https://img.shields.io/github/commits-since/piotro888/vscode-discord-rich-presence/latest/dev?label=commits%40dev%20since%20%20latest%20release">
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/piotro888/vscode-discord-rich-presence">
+  <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/piotro888/vscode-discord-rich-presence?color=green">
 </p>
 
 Discord Rich Presence extension for VSCode by Piotro
@@ -28,10 +28,10 @@ Shows what you're editing in VSCode with advanced Dicord Rich Presence.
 VSCode marketplace: Exstension will be avalible VSCode marketplace soon
 
 Offline installation:
-Download latest `.vsix` release from https://github.com/piotro888/vscode-disocrd-rich-presence/releases and install it in VSCode from Extensions > ... > Install from VSIX
+Download latest `.vsix` release from https://github.com/piotro888/vscode-discord-rich-presence/releases and install it in VSCode from Extensions > ... > Install from VSIX
 
 ## Bug reports and feature requests
-Submit new issue: https://github.com/piotro888/vscode-disocrd-rich-presence/issues
+Submit new issue: https://github.com/piotro888/vscode-discord-rich-presence/issues
 
 ## Commands
 * `discord.enable` - Enable exstension in workspace (updates workspace settings)
@@ -51,7 +51,7 @@ Clone repository and use `npm install`. Debugging already configured for VSCode 
 * More customization :)
 
 ## Images
-![example image](https://github.com/piotro888/vscode-disocrd-rich-presence/blob/master/images/example.png?raw=true)
+![example image](https://github.com/piotro888/vscode-discord-rich-presence/blob/master/images/example.png?raw=true)
 
 ## License
 License: GPL v3
