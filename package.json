@@ -21,18 +21,18 @@
     "contributes": {
         "commands":[
             {
-                "command": "discord.enableworkspace",
+                "command": "discord.enable",
                 "title": "Enable VSCode Rich Presence plugin in workspace (updates workspace settings)",
                 "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
-                "command": "discord.disableworkspace",
+                "command": "discord.disable",
                 "title": "Disable Rich Presence plugin in workspace (updates workspace settings)",
                 "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
                 "command": "discord.connect",
-                "title": "Connect to Discord and enable Rich Presence",
+                "title": "Connect to Discord and show Rich Presence",
                 "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
