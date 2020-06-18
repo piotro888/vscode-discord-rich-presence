@@ -1,7 +1,11 @@
 # Discord Rich Presence extension for VSCode
 
 <p align="center">
-  <img alt="version" src="https://img.shields.io/github/package-json/v/piotro888/vscode-disocrd-rich-presence/master?label=version">
+  <img alt="GitHub release" src="https://img.shields.io/github/v/release/piotro888/vscode-disocrd-rich-presence">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/piotro888/vscode-disocrd-rich-presence/dev?color=blue">
+  <img alt="GitHub commits since latest release (by date)" src="https://img.shields.io/github/commits-since/piotro888/vscode-disocrd-rich-presence/latest/dev?label=commits%40dev%20since%20%20latest%20release">
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/piotro888/vscode-disocrd-rich-presence">
+  <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/piotro888/vscode-disocrd-rich-presence?color=green">
 </p>
 
 Discord Rich Presence extension for VSCode by Piotro
@@ -28,6 +32,16 @@ Download latest `.vsix` release from https://github.com/piotro888/vscode-disocrd
 
 ## Bug reports and feature requests
 Submit new issue: https://github.com/piotro888/vscode-disocrd-rich-presence/issues
+
+## Commands
+* `discord.enable` - Enable exstension in workspace (updates workspace settings)
+* `discord.disable` - Disable exstension in workspace (updates workspace settings)
+* `discord.connect` - Connect to Discord and show Rich Presence
+* `discord.disconnect` - Disconnect from Discord
+* `discord.reset` - Reset Discord connection
+* `discord.timerreset` - Reset timer/elapsed time
+* `discord.timerenable` - Enable timer/elapsed time field (updates workspace settings)
+* `discord.timerdisable` - Disable timer/elapsed time field (updates workspace settings)
 
 ## Building
 Clone repository and use `npm install`. Debugging already configured for VSCode in `launch.json`. Open in VSCode workspace and run configuration `Run Extension`.
