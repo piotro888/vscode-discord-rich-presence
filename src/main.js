@@ -19,7 +19,7 @@
 
 const vscode = require('vscode'); //vscode api
 const rpcmgr = require('./rpcmgr');
-const jsonext = require('./data/extensions.json')
+const jsonext = require('./data/extensions.json');
 
 let interval;
 let startTime;

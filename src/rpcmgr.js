@@ -37,14 +37,17 @@ function init(){
 }
 
 function updateIdle(startTime){
+    //config should be named in that way because of vscode config name display (displays space before capital letter)
+    let idle_state_text = vscode.workspace.getConfiguration('discord').idleSmallText;
+    let idle_image_text = vscode.workspace.getConfiguration('discord').idleImageText;
     client.setActivity({
         details: 'idle, no file opened',
-        state: 'uwu',
+        state: idle_state_text,
         startTimestamp: startTime,
         largeImageKey: 'vscode_icon',
         largeImageText: 'vscode@linux',
         smallImageKey: 'discord_idle_icon',
-        smallImageText: 'Thread.sleep(2000);',
+        smallImageText: idle_image_text,
         instance: false,
     }).catch((err)=>errorHandler(1));
 }
@@ -76,6 +79,7 @@ function updateData(filename, startTime, currline, maxline, lang){
 }
 
 function updateDebug(filename, startTime, currline, maxline, lang){
+    let debug_image_text = vscode.workspace.getConfiguration('discord').debugImageText;
     if(typeof lang !== "undefined")
         client.setActivity({
             details: `Debugging file: ${filename}`,
@@ -84,7 +88,7 @@ function updateDebug(filename, startTime, currline, maxline, lang){
             smallImageKey: `${lang}_icon`,
             smallImageText: `${lang}@vscode@linux`,
             largeImageKey: 'debug_icon',
-            largeImageText: 'dddddeebug',
+            largeImageText: debug_image_text,
             instance: false,
         }).catch((err)=>errorHandler(1));
     else
@@ -95,7 +99,7 @@ function updateDebug(filename, startTime, currline, maxline, lang){
             smallImageKey: `undefined_icon`,
             smallImageText: `unknown_lang@vscode@linux`,
             largeImageKey: 'debug_icon',
-            largeImageText: 'dddddeebug',
+            largeImageText: debug_image_text,
             instance: false,
         }).catch((err)=>errorHandler(1));
 }
