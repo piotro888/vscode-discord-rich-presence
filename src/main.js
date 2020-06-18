@@ -71,6 +71,10 @@ function init_commands(){
         rpcmgr.disconnect();
 
     });
+
+    vscode.commands.registerCommand('discord.timerreset', () => {
+        startTime = new Date();
+    });
 }
 
 function readJSON(){

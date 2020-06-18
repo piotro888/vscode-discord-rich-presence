@@ -23,27 +23,32 @@
             {
                 "command": "discord.enableworkspace",
                 "title": "Enable VSCode Rich Presence plugin in workspace (save to settings)",
-                "category": "Piotro Rich Presence"
+                "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
                 "command": "discord.disableworkspace",
                 "title": "Disable Rich Presence plugin in workspace (save to settings)",
-                "category": "Piotro Rich Presence"
+                "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
                 "command": "discord.connect",
                 "title": "Connect to Discord and enable Rich Presence",
-                "category": "Piotro Rich Presence"
+                "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
                 "command": "discord.disconnect",
                 "title": "Disconnect from Discord",
-                "category": "Piotro Rich Presence"
+                "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
                 "command": "discord.reset",
                 "title": "Reset connection to Discord",
-                "category": "Piotro Rich Presence"
+                "category": "Discord Rich Presence for VSCode by Piotro"
+            },
+            {
+                "command": "discord.timerreset",
+                "title": "Reset timer",
+                "category": "Discord Rich Presence for VSCode by Piotro"
             }
         ],
         "configuration":[
