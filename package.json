@@ -2,7 +2,7 @@
     "name": "vscode-disocrd-rich-presence",
     "displayName": "Discord Rich Presence for VSCode by Piotro",
     "description": "Displays what you are editing in VSCode with advanced Discord Rich Presence",
-    "version": "2.2.0-SNAPSHOT",
+    "version": "2.2.0-alpha.1",
     "publisher": "piotro888",
     "author": {
         "name": "Piotr Węgrzyn - Piotro"
@@ -22,12 +22,12 @@
         "commands":[
             {
                 "command": "discord.enable",
-                "title": "Enable VSCode Rich Presence plugin in workspace (updates workspace settings)",
+                "title": "Enable exstension in workspace (updates workspace settings)",
                 "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
                 "command": "discord.disable",
-                "title": "Disable Rich Presence plugin in workspace (updates workspace settings)",
+                "title": "Disable exstension in workspace (updates workspace settings)",
                 "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
@@ -42,7 +42,7 @@
             },
             {
                 "command": "discord.reset",
-                "title": "Reset connection to Discord",
+                "title": "Reset Discord connection",
                 "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
