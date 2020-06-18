@@ -22,12 +22,12 @@
         "commands":[
             {
                 "command": "discord.enableworkspace",
-                "title": "Enable VSCode Rich Presence plugin in workspace (save to settings)",
+                "title": "Enable VSCode Rich Presence plugin in workspace (updates workspace settings)",
                 "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
                 "command": "discord.disableworkspace",
-                "title": "Disable Rich Presence plugin in workspace (save to settings)",
+                "title": "Disable Rich Presence plugin in workspace (updates workspace settings)",
                 "category": "Discord Rich Presence for VSCode by Piotro"
             },
             {
@@ -47,7 +47,17 @@
             },
             {
                 "command": "discord.timerreset",
-                "title": "Reset timer",
+                "title": "Reset timer/elapsed time",
+                "category": "Discord Rich Presence for VSCode by Piotro"
+            },
+            {
+                "command": "discord.timerenable",
+                "title": "Enable timer/elapsed time field (updates workspace settings)",
+                "category": "Discord Rich Presence for VSCode by Piotro"
+            },
+            {
+                "command": "discord.timerdisable",
+                "title": "Disable timer/elapsed time field (updates workspace settings)",
                 "category": "Discord Rich Presence for VSCode by Piotro"
             }
         ],
@@ -74,6 +84,11 @@
                         "type": "string",
                         "default": "debug",
                         "description": "Debug icon description"
+                    },
+                    "discord.showTimer": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Show elapsed time"
                     }
                 }
             }

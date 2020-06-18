@@ -75,6 +75,14 @@ function init_commands(){
     vscode.commands.registerCommand('discord.timerreset', () => {
         startTime = new Date();
     });
+
+    vscode.commands.registerCommand('discord.timerenable', () => {
+        vscode.workspace.getConfiguration('discord').update('showTimer', true);
+    });
+
+    vscode.commands.registerCommand('discord.timerdisable', () => {
+        vscode.workspace.getConfiguration('discord').update('showTimer', false);
+    });
 }
 
 function readJSON(){

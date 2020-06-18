@@ -40,10 +40,11 @@ function updateIdle(startTime){
     //config should be named in that way because of vscode config name display (displays space before capital letter)
     let idle_state_text = vscode.workspace.getConfiguration('discord').idleSmallText;
     let idle_image_text = vscode.workspace.getConfiguration('discord').idleImageText;
+    let startTimestamp = (vscode.workspace.getConfiguration('discord').showTimer ? startTime : null);
     client.setActivity({
         details: 'idle, no file opened',
         state: idle_state_text,
-        startTimestamp: startTime,
+        startTimestamp: startTimestamp,
         largeImageKey: 'vscode_icon',
         largeImageText: 'vscode@linux',
         smallImageKey: 'discord_idle_icon',
@@ -54,11 +55,12 @@ function updateIdle(startTime){
 
 function updateData(filename, startTime, currline, maxline, lang){
     console.log(`${lang}_icon`);
+    let startTimestamp = (vscode.workspace.getConfiguration('discord').showTimer ? startTime : null);
     if(typeof lang !== "undefined")
         client.setActivity({
             details: `File: ${filename}`,
             state: `@ line ${currline} of ${maxline}`,
-            startTimestamp: startTime,
+            startTimestamp: startTimestamp,
             largeImageKey: `${lang}_icon`,
             largeImageText: `just ${lang}`,
             smallImageKey: 'vscode_icon',
@@ -69,7 +71,7 @@ function updateData(filename, startTime, currline, maxline, lang){
         client.setActivity({
             details: `file: ${filename}`,
             state: `@ line ${currline} of ${maxline}`,
-            startTimestamp: startTime,
+            startTimestamp: startTimestamp,
             largeImageKey: `vscode_icon`,
             largeImageText: `vscode@linux`,
             smallImageKey: 'undefined_icon',
