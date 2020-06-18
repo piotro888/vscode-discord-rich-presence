@@ -54,7 +54,6 @@ function updateIdle(startTime){
 }
 
 function updateData(filename, startTime, currline, maxline, lang){
-    console.log(`${lang}_icon`);
     let startTimestamp = (vscode.workspace.getConfiguration('discord').showTimer ? startTime : null);
     if(typeof lang !== "undefined")
         client.setActivity({
@@ -127,6 +126,7 @@ function retryHandler(res){
 }
 
 function disconnect(){
+    console.log("Disconnecting from discord");
     if(client) client.destroy().catch((err)=>{});
     first_conn = true;
     errored = false;

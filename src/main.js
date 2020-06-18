@@ -31,8 +31,7 @@ function init(){
         startTime = new Date();
         rpcmgr.init(this);
         interval = setInterval(updatePresence, 2000);
-
-        console.log(`Start time: ${startTime}`);
+        
         extensionArray = Array.from(jsonext);
         
         readJSON();
@@ -87,14 +86,11 @@ function init_commands(){
 
 function readJSON(){
     console.log("converting JSON");
-
     console.log(jsonext);
 
     for(let i=0; i<jsonext.extensions.length; i++){
         extensionMap.set(`${jsonext.extensions[i].ext}`, `${jsonext.extensions[i].lang}`);
     }
-
-    console.log(extensionMap);
 }
 
 function activate(context){
@@ -114,7 +110,6 @@ module.exports = {
 }
 
 function updatePresence(){
-    console.log(rpcmgr.isErrored());
     if(rpcmgr.isErrored() == true){
         if(rpcmgr.shouldDeactivate()) deactivate();  // deactivate only if error window closed - no retry.
         return;
