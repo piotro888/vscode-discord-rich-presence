@@ -19,20 +19,19 @@
 
 const vscode = require('vscode'); //vscode api
 const rpcmgr = require('./rpcmgr');
-const jsonext = require('./data/extensions.json')
+const jsonext = require('./data/extensions.json');
 
 let interval;
 let startTime;
 let extensionMap = new Map();
 
-function init(){
+function init(force){
     console.log("Initializing extension");
-    if(vscode.workspace.getConfiguration('discord').enabled == true){
+    if(vscode.workspace.getConfiguration('discord').enabled == true || force == true){
         startTime = new Date();
-        rpcmgr.init(this);
+        rpcmgr.init();
         interval = setInterval(updatePresence, 2000);
 
-        console.log(`Start time: ${startTime}`);
         extensionArray = Array.from(jsonext);
         
         readJSON();
@@ -43,6 +42,7 @@ function init_commands(){
     vscode.commands.registerCommand('discord.disconnect', () => {
         deactivate();
         rpcmgr.disconnect();
+        vscode.window.showInformationMessage('Discord is DISCONNECTED');
     });
 
     vscode.commands.registerCommand('discord.connect', () => {
@@ -50,6 +50,8 @@ function init_commands(){
         rpcmgr.disconnect();
         rpcmgr.init();
         interval = setInterval(updatePresence, 2000);
+        if(vscode.workspace.getConfiguration('discord').enabled == false)
+            vscode.window.showErrorMessage("Discord Rich presence is disabled in settings. Enable on settings or run discord.enable command");
     });
 
     vscode.commands.registerCommand('discord.reset', () => {
@@ -58,31 +60,44 @@ function init_commands(){
         init();
     });
 
-    vscode.commands.registerCommand('discord.enableworkspace', () => {
+    vscode.commands.registerCommand('discord.enable', () => {
         vscode.workspace.getConfiguration('discord').update('enabled', true);
         deactivate();
         rpcmgr.disconnect();
-        init();
+        init(true);
+        vscode.window.showInformationMessage('Exstension is ENABLED');
     });
 
-    vscode.commands.registerCommand('discord.disableworkspace', () => {
+    vscode.commands.registerCommand('discord.disable', () => {
         vscode.workspace.getConfiguration('discord').update('enabled', false);
         deactivate();
         rpcmgr.disconnect();
+        vscode.window.showInformationMessage('Exstension is DISABLED');
+    });
 
+    vscode.commands.registerCommand('discord.timerreset', () => {
+        startTime = new Date();
+        vscode.window.showInformationMessage('Elapsed time cleared');
+    });
+
+    vscode.commands.registerCommand('discord.timerenable', () => {
+        vscode.workspace.getConfiguration('discord').update('showTimer', true);
+        vscode.window.showInformationMessage('Elapsed time field enabled');
+    });
+
+    vscode.commands.registerCommand('discord.timerdisable', () => {
+        vscode.workspace.getConfiguration('discord').update('showTimer', false);
+        vscode.window.showInformationMessage('Elapsed time field disabled');
     });
 }
 
 function readJSON(){
     console.log("converting JSON");
-
     console.log(jsonext);
 
     for(let i=0; i<jsonext.extensions.length; i++){
         extensionMap.set(`${jsonext.extensions[i].ext}`, `${jsonext.extensions[i].lang}`);
     }
-
-    console.log(extensionMap);
 }
 
 function activate(context){
@@ -102,7 +117,6 @@ module.exports = {
 }
 
 function updatePresence(){
-    console.log(rpcmgr.isErrored());
     if(rpcmgr.isErrored() == true){
         if(rpcmgr.shouldDeactivate()) deactivate();  // deactivate only if error window closed - no retry.
         return;
@@ -111,6 +125,7 @@ function updatePresence(){
     if(vscode.workspace.getConfiguration('discord').enabled == false){
         deactivate();
         rpcmgr.disconnect();
+        return;
     }
 
     if(rpcmgr.isFirstConn()){
