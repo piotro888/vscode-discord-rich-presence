@@ -2,7 +2,7 @@
     "name": "vscode-disocrd-rich-presence",
     "displayName": "Discord Rich Presence for VSCode by Piotro",
     "description": "Displays what you are editing in VSCode with advanced Discord Rich Presence",
-    "version": "2.2.0-alpha.1",
+    "version": "2.2.0",
     "publisher": "piotro888",
     "author": {
         "name": "Piotr Węgrzyn - Piotro"
