@@ -19,6 +19,7 @@
 
 const rpc = require('discord-rpc');
 const vscode = require('vscode');
+const os = require('os');
 
 const CLIENT_ID = '722326832459939912';
 
@@ -28,12 +29,19 @@ let client;
 let errored = false;
 let first_conn = true;
 let shouldDeactivateState = false;
+let os_name;
 
 function init(){
     console.log("Initializing rpc client");
     client = new rpc.Client({transport:"ipc"});
     client.login({clientId: CLIENT_ID}).catch((err)=>{errorHandler(0); return;});
     errored = false;
+
+    os_name = os.platform();
+    console.log(os_name);
+    if(os_name === "win32") os_name = "windows";
+    else if (os_name === "darwin") os_name = "mac";
+    //in different cases os name is correct
 }
 
 function updateIdle(startTime){
@@ -46,7 +54,7 @@ function updateIdle(startTime){
         state: idle_state_text,
         startTimestamp: startTimestamp,
         largeImageKey: 'vscode_icon',
-        largeImageText: 'vscode@linux',
+        largeImageText: `vscode@${os_name}`,
         smallImageKey: 'discord_idle_icon',
         smallImageText: idle_image_text,
         instance: false,
@@ -63,7 +71,7 @@ function updateData(filename, startTime, currline, maxline, lang){
             largeImageKey: `${lang}_icon`,
             largeImageText: `just ${lang}`,
             smallImageKey: 'vscode_icon',
-            smallImageText: 'vscode@linux',
+            smallImageText: `vscode@${os_name}`,
             instance: false,
         }).catch((err)=>errorHandler(1));
     else
@@ -72,7 +80,7 @@ function updateData(filename, startTime, currline, maxline, lang){
             state: `@ line ${currline} of ${maxline}`,
             startTimestamp: startTimestamp,
             largeImageKey: `vscode_icon`,
-            largeImageText: `vscode@linux`,
+            largeImageText: `vscode@${os_name}`,
             smallImageKey: 'undefined_icon',
             smallImageText: 'unknown language',
             instance: false,
@@ -87,7 +95,7 @@ function updateDebug(filename, startTime, currline, maxline, lang){
             state: `Observing line ${currline} of ${maxline}`,
             startTimestamp: startTime,
             smallImageKey: `${lang}_icon`,
-            smallImageText: `${lang}@vscode@linux`,
+            smallImageText: `${lang}@vscode@${os_name}`,
             largeImageKey: 'debug_icon',
             largeImageText: debug_image_text,
             instance: false,
@@ -98,7 +106,7 @@ function updateDebug(filename, startTime, currline, maxline, lang){
             state: `staring @ line ${currline} of ${maxline}`,
             startTimestamp: startTime,
             smallImageKey: `undefined_icon`,
-            smallImageText: `unknown_lang@vscode@linux`,
+            smallImageText: `unknown_lang@vscode@${os_name}`,
             largeImageKey: 'debug_icon',
             largeImageText: debug_image_text,
             instance: false,
