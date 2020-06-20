@@ -44,73 +44,52 @@ function init(){
     //in different cases os name is correct
 }
 
-function updateIdle(startTime){
-    //config should be named in that way because of vscode config name display (displays space before capital letter)
-    let idle_state_text = vscode.workspace.getConfiguration('discord').idleSmallText;
-    let idle_image_text = vscode.workspace.getConfiguration('discord').idleImageText;
+function generatePresence(presenceData = {}){
+    let presence = {};
+    let {isIdle, isDebug, currLine, maxLine, filename, startTime, lang} = presenceData;
+
+    if(isIdle) presence.details = 'idle, no file opened';
+    else if(isDebug) presence.details = `Debugging file: ${filename}`;
+    else presence.details = `File: ${filename}`;
+
+    let idleStateText = vscode.workspace.getConfiguration('discord').idleSmallText;
+    if(isIdle) presence.state = idleStateText;
+    else if(isDebug) presence.state = `Observing line ${currLine} of ${maxLine}`;
+    else presence.state = `@ line ${currLine} of ${maxLine}`;
+
     let startTimestamp = (vscode.workspace.getConfiguration('discord').showTimer ? startTime : null);
-    client.setActivity({
-        details: 'idle, no file opened',
-        state: idle_state_text,
-        startTimestamp: startTimestamp,
-        largeImageKey: 'vscode_icon',
-        largeImageText: `vscode@${os_name}`,
-        smallImageKey: 'discord_idle_icon',
-        smallImageText: idle_image_text,
-        instance: false,
-    }).catch((err)=>errorHandler(1));
+    presence.startTimestamp = startTimestamp;
+
+    if(isIdle) presence.largeImageKey = 'vscode_icon';
+    else if(isDebug) presence.largeImageKey = 'debug_icon';
+    else if(typeof lang === "undefined") presence.largeImageKey = 'vscode_icon';
+    else presence.largeImageKey = `${lang}_icon`;
+
+    let debugImageText = vscode.workspace.getConfiguration('discord').debugImageText;
+    if(isIdle) presence.largeImageText = `vscode@${os_name}`;
+    else if(isDebug) presence.largeImageText = debugImageText;
+    else if(typeof lang === `undefined`) presence.largeImageText = `vscode@${os_name}`;
+    else presence.largeImageText = `just ${lang}`;
+
+    if(isIdle) presence.smallImageKey = 'discord_idle_icon';
+    else if(typeof lang == "undefined") presence.smallImageKey = 'undefined_icon';
+    else if(isDebug) presence.smallImageKey = `${lang}_icon`;
+    else presence.smallImageKey = `vscode_icon`;
+
+    let idleImageText = vscode.workspace.getConfiguration('discord').idleImageText;
+    if(isIdle) presence.smallImageText= idleImageText;
+    else if(typeof lang == "undefined" && isDebug) presence.smallImageText = `unknown_lang@vscode@${os_name}`;
+    else if(typeof lang == "undefined") presence.smallImageText = `unknown_lang`;
+    else if(isDebug) presence.smallImageText = `${lang}@vscode@${os_name}`;
+    else presence.smallImageText = `vscode@${os_name}`;
+
+    presence.instance = false;
+
+    return presence;
 }
 
-function updateData(filename, startTime, currline, maxline, lang){
-    let startTimestamp = (vscode.workspace.getConfiguration('discord').showTimer ? startTime : null);
-    if(typeof lang !== "undefined")
-        client.setActivity({
-            details: `File: ${filename}`,
-            state: `@ line ${currline} of ${maxline}`,
-            startTimestamp: startTimestamp,
-            largeImageKey: `${lang}_icon`,
-            largeImageText: `just ${lang}`,
-            smallImageKey: 'vscode_icon',
-            smallImageText: `vscode@${os_name}`,
-            instance: false,
-        }).catch((err)=>errorHandler(1));
-    else
-        client.setActivity({
-            details: `file: ${filename}`,
-            state: `@ line ${currline} of ${maxline}`,
-            startTimestamp: startTimestamp,
-            largeImageKey: `vscode_icon`,
-            largeImageText: `vscode@${os_name}`,
-            smallImageKey: 'undefined_icon',
-            smallImageText: 'unknown language',
-            instance: false,
-        }).catch((err)=>errorHandler(1));
-}
-
-function updateDebug(filename, startTime, currline, maxline, lang){
-    let debug_image_text = vscode.workspace.getConfiguration('discord').debugImageText;
-    if(typeof lang !== "undefined")
-        client.setActivity({
-            details: `Debugging file: ${filename}`,
-            state: `Observing line ${currline} of ${maxline}`,
-            startTimestamp: startTime,
-            smallImageKey: `${lang}_icon`,
-            smallImageText: `${lang}@vscode@${os_name}`,
-            largeImageKey: 'debug_icon',
-            largeImageText: debug_image_text,
-            instance: false,
-        }).catch((err)=>errorHandler(1));
-    else
-        client.setActivity({
-            details: `Debugging file: ${filename}`,
-            state: `staring @ line ${currline} of ${maxline}`,
-            startTimestamp: startTime,
-            smallImageKey: `undefined_icon`,
-            smallImageText: `unknown_lang@vscode@${os_name}`,
-            largeImageKey: 'debug_icon',
-            largeImageText: debug_image_text,
-            instance: false,
-        }).catch((err)=>errorHandler(1));
+function updatePresence(presence){
+    client.setActivity(presence).catch(() => errorHandler(1));
 }
 
 function isErrored(){
@@ -154,9 +133,8 @@ function resetFirstConn(){
 
 module.exports = {
     init,
-    updateIdle,
-    updateData,
-    updateDebug,
+    generatePresence,
+    updatePresence,
     isErrored,
     shouldDeactivate,
     isFirstConn,

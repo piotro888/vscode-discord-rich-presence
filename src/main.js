@@ -116,6 +116,40 @@ module.exports = {
     deactivate
 }
 
+function getPresenceData(){
+    let presenceData = {};
+
+    presenceData.startTime = startTime;
+
+    if(typeof vscode.window.activeTextEditor !== "undefined"){
+
+        let filepath = vscode.window.activeTextEditor.document.fileName;
+        
+        filepath = "\/" + filepath;
+        const matches = filepath.split("/");
+        let filename = matches[matches.length - 1];
+        splitarr = filename.split(".")
+        let ext = splitarr[splitarr.length - 1];
+        
+        presenceData.lang = extensionMap.get(ext);
+
+        presenceData.maxLine = vscode.window.activeTextEditor.document.lineCount;
+        presenceData.currLine = vscode.window.activeTextEditor.selection.start.line+1;
+        presenceData.filename = filename;
+        presenceData.isIdle = false;
+
+
+        if(typeof vscode.debug.activeDebugSession !== "undefined")
+            presenceData.isDebug = true;
+        else
+            presenceData.isDebug = false;
+
+    } else
+        presenceData.isIdle = true;
+    
+    return presenceData;
+}
+
 function updatePresence(){
     if(rpcmgr.isErrored() == true){
         if(rpcmgr.shouldDeactivate()) deactivate();  // deactivate only if error window closed - no retry.
@@ -135,26 +169,6 @@ function updatePresence(){
 
     console.log("updating presence data");
     
-    if(typeof vscode.window.activeTextEditor !== "undefined"){
-        let filepath = vscode.window.activeTextEditor.document.fileName;
-        let totlines = vscode.window.activeTextEditor.document.lineCount;
-        let currline = vscode.window.activeTextEditor.selection.start.line+1;
-        
-        filepath = "\/" + filepath;
-        const matches = filepath.split("/");
-        let filename = matches[matches.length - 1];
-        splitarr = filename.split(".")
-        let ext = splitarr[splitarr.length - 1];
-
-        let lang = extensionMap.get(ext);
-
-        if(typeof vscode.debug.activeDebugSession !== "undefined"){
-            rpcmgr.updateDebug(filename, startTime, currline, totlines, lang);
-        } else {
-            rpcmgr.updateData(filename, startTime, currline, totlines, lang);
-        }
-
-    } else {
-        rpcmgr.updateIdle(startTime);
-    }
+    let presence = rpcmgr.generatePresence(getPresenceData());
+    rpcmgr.updatePresence(presence);
 }
