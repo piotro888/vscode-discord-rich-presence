@@ -25,13 +25,24 @@ Shows what you're editing in VSCode with advanced Dicord Rich Presence.
 * Easy to use VSCode commands
 
 ## Download
-VSCode marketplace: Exstension will be avalible VSCode marketplace soon
+### Notice: It won't work if you have discord or vscode installed from snap
+Check `snap list` to see if you don't have them installed from snap store. On linux both vscode and discord need to be installed from ex. `.deb`, source or similar to work with this extension
 
-Offline installation:
-Download latest `.vsix` release from https://github.com/piotro888/vscode-discord-rich-presence/releases and install it in VSCode from Extensions > ... > Install from VSIX
+### Instalation:
+* Add Visual Studio Code as game in Discord
 
-## Bug reports and feature requests
-Submit new issue: https://github.com/piotro888/vscode-discord-rich-presence/issues
+    Open VSCode, go to Discord -> User Settings -> Game Activity -> Not seeing your game? Add it! and select Visual Studio Code from list 
+ 
+ * Download and install extenstion
+ 
+    VSCode marketplace: Exstension will be avalible VSCode marketplace soon
+     
+     **Offline installation:**
+     Download latest `.vsix` release from https://github.com/piotro888/vscode-discord-rich-presence/releases and install it in VSCode from Extensions (left side menu) > ... > Install from VSIX
+* Restart Visual Studio Code
+
+## Contributing, bug reports and feature requests
+See CONTRIBUTING.md
 
 ## Commands
 * `discord.enable` - Enable exstension in workspace (updates workspace settings)
@@ -44,7 +55,7 @@ Submit new issue: https://github.com/piotro888/vscode-discord-rich-presence/issu
 * `discord.timerdisable` - Disable timer/elapsed time field (updates workspace settings)
 
 ## Building
-Clone repository and use `npm install`. Debugging already configured for VSCode in `launch.json`. Open in VSCode workspace and run configuration `Run Extension`.
+Clone repository and use `npm install`. Debugging and start already configured for VSCode in `launch.json`. Open in VSCode workspace and run configuration `Run Extension`.
 
 ## Upcoming features
 * Support for more extensions
