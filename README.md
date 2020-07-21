@@ -31,13 +31,13 @@ Check `snap list` to see if you don't have them installed from snap store. On li
 ### Instalation:
 * Add Visual Studio Code as game in Discord
 
-    Open VSCode, go to Discord -> User Settings -> Game Activity -> Not seeing your game? Add it! and select Visual Studio Code from list 
+    Open VSCode, go to Discord -> User Settings -> Game Activity -> Not seeing your game? Add it!, select Visual Studio Code from list and make sure that "Display currently running game as status message" is checked.
  
- * Download and install extenstion
+* Download and install extenstion
  
-    VSCode marketplace: Exstension will be avalible VSCode marketplace soon
+  VSCode marketplace: Exstension will be avalible VSCode marketplace ~~soon~~
      
-     **Offline installation:**
+  **Offline installation:**
      Download latest `.vsix` release from https://github.com/piotro888/vscode-discord-rich-presence/releases and install it in VSCode from Extensions (left side menu) > ... > Install from VSIX
 * Restart Visual Studio Code
 
@@ -45,6 +45,7 @@ Check `snap list` to see if you don't have them installed from snap store. On li
 See CONTRIBUTING.md
 
 ## Commands
+To enter commands press `Ctrl+Shift+P` and type command name
 * `discord.enable` - Enable exstension in workspace (updates workspace settings)
 * `discord.disable` - Disable exstension in workspace (updates workspace settings)
 * `discord.connect` - Connect to Discord and show Rich Presence
